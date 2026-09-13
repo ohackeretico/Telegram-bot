@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: telegram-scheduler-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /health
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_USER_IDS
+        sync: false
+      - key: BOT_TIMEZONE
+        value: America/Sao_Paulo
