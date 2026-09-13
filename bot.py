@@ -87,7 +87,7 @@ def api(method, data=None):
     url = f"https://api.telegram.org/bot{TOKEN}/{method}"
     encoded = urllib.parse.urlencode(data or {}).encode("utf-8")
     request = urllib.request.Request(url, data=encoded, method="POST")
-    with urllib.request.urlopen(request, timeout=45) as response:
+    with urllib.request.urlopen(request, timeout=70) as response:
         result = json.loads(response.read().decode("utf-8"))
     if not result.get("ok"):
         raise RuntimeError(result.get("description", "Erro desconhecido na API do Telegram"))
